@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Exam Results — Login</title>
+  <link rel="stylesheet" href="login-style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <img src="images/header-logo-01.svg" alt="Header Logo" class="logo header-logo">
+  </header>
+
+  <main class="container">
+    <h1 class="exam-title">November Semester Examination 2025-26 Result</h1>
+
+    <!-- class groups -->
+    <section class="group">
+      <h3 class="group-title">Majestir (PG)</h3>
+      <div class="pill-row">
+        <button class="pill" data-class="class7">07 - Mājastīr Thāni</button>
+        <button class="pill" data-class="class6">06 - Mājastīr Awwal</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h3 class="group-title">Āliya (Degree)</h3>
+      <div class="pill-row">
+        <button class="pill" data-class="class5">05 - Āliya Thālitha</button>
+        <button class="pill" data-class="class4">04 - Āliya Thāniya</button>
+        <button class="pill" data-class="class3">03 - Āliya Ūla</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h3 class="group-title">Tamhīdiyya (Preparatory)</h3>
+      <div class="pill-row">
+        <button class="pill" data-class="class2">02 - Tamhīdiyya Thāniya</button>
+        <button class="pill" data-class="class1">01 - Tamhīdiyya Ūla</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <img src="images/footer-logo-01.svg" alt="Footer Logo" class="logo footer-logo">
+    <p class="copyright">© Hamdan Foundation</p>
+  </footer>
+
+  <!-- popups (use same script.js functions) -->
+  <div id="studentPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup('studentPopup')">&times;</span>
+      <h2 id="classTitle"></h2>
+      <div id="studentList" class="student-list"></div>
+    </div>
+  </div>
+
+  <div id="passwordPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup('passwordPopup')">&times;</span>
+      <h2 id="studentNameTitle"></h2>
+      <input type="password" id="passwordInput" placeholder="Enter Password" />
+      <button onclick="verifyPassword()">Submit</button>
+    </div>
+  </div>
+
+  <div id="resultPopup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup('resultPopup')">&times;</span>
+      <img id="resultImage" src="" alt="Result" class="result-img" />
+      <div>
+        <button id="downloadBtn" onclick="downloadImage()">Download</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // attach click events to all pills
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.pill').forEach(btn => {
+        btn.addEventListener('click', () => openClass(btn.dataset.class));
+      });
+      // render left-over functions in script.js expect renderClassButtons(); we don't need it anymore for pills
+    });
+  </script>
+</body>
+</html>
